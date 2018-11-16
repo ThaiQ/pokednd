@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-var spdamage, damage, mod, fdamage, fspdamage;
+var spdamage, damage, mod, fdamage, fspdamage, hit;
 var lowerd, higherd, lowersd, highersd;
 
 class App extends Component {
@@ -79,6 +79,21 @@ other(event){
     other:event.target.value,
   })
 }
+accuracy(event){
+  this.setState({
+    accuracy:event.target.value,
+  })
+}
+evasion(event){
+  this.setState({
+    evasion:event.target.value,
+  })
+}
+baseacc(event){
+  this.setState({
+    baseacc:event.target.value,
+  })
+}
 
 render(){
 
@@ -106,38 +121,50 @@ render(){
   }
 
   function modc(other){
-    var crit = document.getElementById("crit");
-    var target = document.getElementById("target");
-    var weather = document.getElementById("weather");
-    var burn = document.getElementById("burn");
-    var stab = document.getElementById("stab");
-    var type = document.getElementById("type");
-    var other = +other;
+     var crit = document.getElementById("crit");
+     var target = document.getElementById("target");
+     var weather = document.getElementById("weather");
+     var burn = document.getElementById("burn");
+     var stab = document.getElementById("stab");
+     var type = document.getElementById("type");
 
-    if (crit != null) {crit = +crit.value;}else {crit = null;}
-    if (target != null) {target = +target.value;}else {target = null;}
-    if (weather != null) {weather = +weather.value;}else {weather = null;}
-    if (burn != null) {burn = +burn.value;}else {burn = null;}
-    if (stab != null) {stab = +stab.value;}else {stab = null;}
-    if (type != null) {type = +type.value;}else {type = null;}
+    if (crit != null) {crit = crit.value;}else {crit = null;}
+    if (target != null) {target = target.value;}else {target = null;}
+    if (weather != null) {weather = weather.value;}else {weather = null;}
+    if (burn != null) {burn = burn.value;}else {burn = null;}
+    if (stab != null) {stab = stab.value;}else {stab = null;}
+    if (type != null) {type = type.value;}else {type = null;}
+
+    crit= parseFloat(crit);
+    target = parseFloat(target);
+    weather = parseFloat(weather);
+    burn = parseFloat(burn);
+    stab = parseFloat(stab);
+    type = parseFloat(type);
+    var other = parseFloat(other);
 
     mod=crit*target*weather*burn*stab*type*other;
   }
 
   function random(min,max){return Math.floor(Math.random()*(max-min+1)+min);}
 
-  function finaldamage(power, def, spdef, att, spatt, lv, other){
-    damagec(power, def, spdef, att, spatt, lv);
-    spdamagec(power, def, spdef, att, spatt, lv);
-    modc(other);
+  function finaldamage(){
     lowerd=damage*mod*0.85;
     lowersd=spdamage*mod*0.85;
-    lowerd=damage*mod*1;
-    lowersd=spdamage*mod*1;
+    higherd=damage*mod*1;
+    highersd=spdamage*mod*1;
     damage=random(lowerd,higherd);
     spdamage=random(lowersd,highersd);
   }
 
+  function hit(acc,eva,baseacc){
+    var acc = + acc;
+    var eva = + eva;
+    var baseacc = + baseacc;
+    hit = baseacc*(acc/eva);
+    hit = 100-hit ;
+    hit = parseInt(hit);
+  }
 
   return(
     <div className="App">
@@ -165,7 +192,7 @@ render(){
         <option value="1.5" default>match</option>
         <option value="2">adaptability</option>
         </select>
-        <select id="stab" onChange={this.type.bind(this)}>
+        <select id="type" onChange={this.type.bind(this)}>
         <option value="0" default>type</option>
         <option value="1" default>normal</option>
         <option value="2" default>super effective</option>
@@ -178,9 +205,9 @@ render(){
         <option value="1" default>no</option>
         <option value="0.5">yes</option>
         </select>
-
-
-      Name: <input type="text"/>
+</div>
+<div>
+      Name:<input type="text"/>
       lv<input type="number" onChange={this.level.bind(this)}/>
       pwr<input type="number" onChange={this.power.bind(this)}/>
       def<input type="number" onChange={this.def.bind(this)}/>
@@ -188,11 +215,22 @@ render(){
       att<input type="number" onChange={this.at.bind(this)}/>
       sp.att<input type="number" onChange={this.sat.bind(this)}/>
       other<input type="number" onChange={this.other.bind(this)}/>
+      accuracy<input type="number" onChange={this.accuracy.bind(this)}/>
+      evasion<input type="number" onChange={this.evasion.bind(this)}/>
+      base accuracy<input type="number" onChange={this.baseacc.bind(this)}/>
       </div>
 
-      <h1>{finaldamage(this.state.power,this.state.def,this.state.sdef,this.state.at,this.state.sat,this.state.lv,this.state.other)}Damage: {damage}</h1>
-      <h1>Special Damage: {spdamage}{damage}{lowerd}{higherd}</h1>
-      <button onClick={finaldamage(this.state.power,this.state.def,this.state.sdef,this.state.at,this.state.sat,this.state.lv,this.state.other)}>c</button>
+      <p>
+        {damagec(this.state.power,this.state.def,this.state.sdef,this.state.at,this.state.sat,this.state.lv)}
+        {spdamagec(this.state.power,this.state.def,this.state.sdef,this.state.at,this.state.sat,this.state.lv)}
+        {modc(this.state.other)}
+        {finaldamage()}
+        {hit(this.state.accuracy,this.state.evasion,this.state.baseacc)}
+        Damage: {damage}
+        Sp.Damage: {spdamage}
+        Miss Percentage: {hit}
+      </p>
+
     </div>
   );
 }
