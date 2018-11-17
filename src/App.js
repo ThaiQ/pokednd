@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 var spdamage, damage, mod, fdamage, fspdamage, hit;
-var lowerd, higherd, lowersd, highersd;
+var lowerd, higherd, lowersd, highersd, stage, hp;
 
 class App extends Component {
 
@@ -94,6 +94,26 @@ baseacc(event){
     baseacc:event.target.value,
   })
 }
+stage(event){
+  this.setState({
+    stage:event.target.value,
+  })
+}
+stageui(event){
+  this.setState({
+    stageui:event.target.value,
+  })
+}
+health(event){
+  this.setState({
+    health:event.target.value,
+  })
+}
+hin(event){
+  this.setState({
+    hin:event.target.value,
+  })
+}
 
 render(){
 
@@ -166,9 +186,24 @@ render(){
     hit = parseInt(hit);
   }
 
+  function stagec(number){
+    var num = + number;
+    var stagein = document.getElementById("stage");
+    if (stagein != null) {stagein = stagein.value;}else {stagein = null;}
+    stagein = parseFloat(stagein);
+    stage = stagein * number / 100;
+    stage = Math.round(stage);
+  }
+
+  function healthc(health,input){
+    var health = + health;
+    var input = + input;
+    hp = health - input;
+  }
+
   return(
     <div className="App">
-      <div>
+      <div className="option">
 
         <select id="crit" onChange={this.crit.bind(this)}>
         <option value="0" default>crit</option>
@@ -205,31 +240,62 @@ render(){
         <option value="1" default>no</option>
         <option value="0.5">yes</option>
         </select>
-</div>
-<div>
+
+        <div className="acc">
+        accuracy<input type="number" onChange={this.accuracy.bind(this)}/>
+        evasion<input type="number" onChange={this.evasion.bind(this)}/>
+        base accuracy<input type="number" onChange={this.baseacc.bind(this)}/>
+        </div>
+
+        <div className="stage">
+        {stagec(this.state.stageui)}
+        stage<input type="number" onChange={this.stageui.bind(this)}/>
+        <select id="stage" onChange={this.stage.bind(this)}>
+        <option value="1" default>stage 0</option>
+        <option value="133.33" default>1</option>
+        <option value="166.67" default>2</option>
+        <option value="200" default>3</option>
+        <option value="233.33" default>4</option>
+        <option value="266.67" default>5</option>
+        <option value="300" default>6</option>
+        <option value="75" default>-1</option>
+        <option value="60" default>-2</option>
+        <option value="50" default>-3</option>
+        <option value="43" default>-4</option>
+        <option value="37.5" default>-5</option>
+        <option value="33.3" default>-6</option>
+        </select>
+        {stage}
+        </div>
+
+        <div className="health">
+        health:{healthc(this.state.health, this.state.hin)} {hp}<input type="number" onChange={this.health.bind(this)}/>
+        <input type="number" onChange={this.hin.bind(this)}/>
+        </div>
+      </div>
+
+      <div className="input">
       Name:<input type="text"/>
       lv<input type="number" onChange={this.level.bind(this)}/>
-      pwr<input type="number" onChange={this.power.bind(this)}/>
-      def<input type="number" onChange={this.def.bind(this)}/>
-      sp.def<input type="number" onChange={this.sdef.bind(this)}/>
+      Target def<input type="number" onChange={this.def.bind(this)}/>
+      Target sp.def<input type="number" onChange={this.sdef.bind(this)}/>
       att<input type="number" onChange={this.at.bind(this)}/>
       sp.att<input type="number" onChange={this.sat.bind(this)}/>
       other<input type="number" onChange={this.other.bind(this)}/>
-      accuracy<input type="number" onChange={this.accuracy.bind(this)}/>
-      evasion<input type="number" onChange={this.evasion.bind(this)}/>
-      base accuracy<input type="number" onChange={this.baseacc.bind(this)}/>
+      pwr<input type="number" onChange={this.power.bind(this)}/>
       </div>
 
-      <p>
+      <div className="output">
         {damagec(this.state.power,this.state.def,this.state.sdef,this.state.at,this.state.sat,this.state.lv)}
         {spdamagec(this.state.power,this.state.def,this.state.sdef,this.state.at,this.state.sat,this.state.lv)}
         {modc(this.state.other)}
         {finaldamage()}
         {hit(this.state.accuracy,this.state.evasion,this.state.baseacc)}
-        Damage: {damage}
-        Sp.Damage: {spdamage}
-        Miss Percentage: {hit}
-      </p>
+        <h1>Damage: {damage}</h1>
+        <h1>Sp. Damage: {spdamage}</h1>
+        <h1>Miss Percentage: {hit}</h1>
+      </div>
+
 
     </div>
   );
