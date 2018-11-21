@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import Enemy from './Enemy.js';
 import logo from './logo.svg';
 import './App.css';
+import enemydata from './data/enemy.json';
 
 var spdamage, damage, mod, fdamage, fspdamage, hit;
 var lowerd, higherd, lowersd, highersd, stage, hp;
@@ -242,9 +244,9 @@ render(){
         </select>
 
         <div className="acc">
-        accuracy<input type="number" onChange={this.accuracy.bind(this)}/>
-        evasion<input type="number" onChange={this.evasion.bind(this)}/>
-        base accuracy<input type="number" onChange={this.baseacc.bind(this)}/>
+        <p className="head">accuracy</p><input type="number" onChange={this.accuracy.bind(this)}/>
+        <p className="head">evasion</p><input type="number" onChange={this.evasion.bind(this)}/>
+        <p className="head">base accuracy</p><input type="number" onChange={this.baseacc.bind(this)}/>
         </div>
 
         <div className="stage">
@@ -275,14 +277,14 @@ render(){
       </div>
 
       <div className="input">
-      Name:<input type="text"/>
-      lv<input type="number" onChange={this.level.bind(this)}/>
-      Target def<input type="number" onChange={this.def.bind(this)}/>
-      Target sp.def<input type="number" onChange={this.sdef.bind(this)}/>
-      att<input type="number" onChange={this.at.bind(this)}/>
-      sp.att<input type="number" onChange={this.sat.bind(this)}/>
-      other<input type="number" onChange={this.other.bind(this)}/>
-      pwr<input type="number" onChange={this.power.bind(this)}/>
+      <p className="head">Name:</p><input type="text"/>
+      <p className="head">lv</p><input type="number" onChange={this.level.bind(this)}/>
+      <p className="head">Target def</p><input type="number" onChange={this.def.bind(this)}/>
+      <p className="head">Target sp.def</p><input type="number" onChange={this.sdef.bind(this)}/>
+      <p className="head">att</p><input type="number" onChange={this.at.bind(this)}/>
+      <p className="head">sp.att</p><input type="number" onChange={this.sat.bind(this)}/>
+      <p className="head">other</p><input type="number" onChange={this.other.bind(this)}/>
+      <p className="head">pwr</p><input type="number" onChange={this.power.bind(this)}/>
       </div>
 
       <div className="output">
@@ -296,6 +298,9 @@ render(){
         <h1>Miss Percentage: {hit}</h1>
       </div>
 
+      h:<Enemy></Enemy>
+      {Enemy.a}{Enemy.b}{Enemy.c}
+      {console.log(Enemy.a)}
 
     </div>
   );
