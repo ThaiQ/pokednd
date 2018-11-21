@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import Enemy from './Enemy.js';
+import Enemy from './enemy/Enemy.js';
+import {ans} from './enemy/Enemy.js';
+import {player} from './enemy/Enemy.js';
 import logo from './logo.svg';
 import './App.css';
-import enemydata from './data/enemy.json';
 
 var spdamage, damage, mod, fdamage, fspdamage, hit;
 var lowerd, higherd, lowersd, highersd, stage, hp;
@@ -120,24 +121,82 @@ hin(event){
 render(){
 
   function damagec(power, def, spdef, att, spatt, lv){
-    var power = + power;
-    var def = + def;
-    var spdef = + spdef;
-    var att = + att;
-    var spatt = + spatt
-    var lv = + lv;
-    var dice = + dice;
+
+    if(player==0 && ans==0){
+      var power = + power;
+      var att = + att;
+      var spatt = + spatt
+      var lv = + lv;
+      var def = + def;
+      var spdef = + spdef;
+    } else if (player==0 && ans!=0){
+      var power = + power;
+      var att = + att;
+      var spatt = + spatt
+      var lv = + lv;
+      var def = + def;
+      var spdef = + spdef;
+      def = + ans.def;
+      spdef = + ans.spdef;
+    } else if (player==1 && ans==0) {
+      var power = + power;
+      var att = + att;
+      var spatt = + spatt
+      var lv = + lv;
+      var def = + def;
+      var spdef = + spdef;
+    } else if (player==1 && ans!=0) {
+      var power = + power;
+      var att = + att;
+      var spatt = + spatt
+      var lv = + lv;
+      var def = + def;
+      var spdef = + spdef;
+      lv = ans.lv;
+      att = ans.att;
+      spatt = ans.spatt;
+    }
+
     damage = (((((2*lv)/5)+2)*power*(att/def))/50)+2;
     damage = parseInt(damage);
   }
   function spdamagec(power, def, spdef, att, spatt, lv){
-    var power = + power;
-    var def = + def;
-    var spdef = + spdef;
-    var att = + att;
-    var spatt = + spatt
-    var lv = + lv;
-    var dice = + dice;
+
+    if(player==0 && ans==0){
+      var power = + power;
+      var att = + att;
+      var spatt = + spatt
+      var lv = + lv;
+      var def = + def;
+      var spdef = + spdef;
+    } else if (player==0 && ans!=0){
+      var power = + power;
+      var att = + att;
+      var spatt = + spatt
+      var lv = + lv;
+      var def = + def;
+      var spdef = + spdef;
+      def = + ans.def;
+      spdef = + ans.spdef;
+    } else if (player==1 && ans==0) {
+      var power = + power;
+      var att = + att;
+      var spatt = + spatt
+      var lv = + lv;
+      var def = + def;
+      var spdef = + spdef;
+    } else if (player==1 && ans!=0) {
+      var power = + power;
+      var att = + att;
+      var spatt = + spatt
+      var lv = + lv;
+      var def = + def;
+      var spdef = + spdef;
+      lv = ans.lv;
+      att = ans.att;
+      spatt = ans.spatt;
+    }
+
     spdamage = (((((2*lv)/5)+2)*power*(spatt/spdef))/50)+2;
     spdamage = parseInt(spdamage);
   }
@@ -208,38 +267,38 @@ render(){
       <div className="option">
 
         <select id="crit" onChange={this.crit.bind(this)}>
-        <option value="0" default>crit</option>
-        <option value="1" default>no</option>
+        <option value="0">crit</option>
+        <option value="1">no</option>
         <option value="1.5">yes</option>
         </select>
         <select id="target" onChange={this.target.bind(this)}>
-        <option value="0" default>target</option>
-        <option value="1" default>1</option>
+        <option value="0">target</option>
+        <option value="1">1</option>
         <option value="0.75">2 or more</option>
         </select>
         <select id="weather" onChange={this.weather.bind(this)}>
-        <option value="0" default>weather</option>
-        <option value="1" default>default</option>
+        <option value="0">weather</option>
+        <option value="1">default</option>
         <option value="1.5">advantage</option>
         <option value="0.5">disadvantage</option>
         </select>
         <select id="stab" onChange={this.stab.bind(this)}>
-        <option value="0" default>stab</option>
-        <option value="1" default>default</option>
-        <option value="1.5" default>match</option>
+        <option value="0">stab</option>
+        <option value="1">default</option>
+        <option value="1.5">match</option>
         <option value="2">adaptability</option>
         </select>
         <select id="type" onChange={this.type.bind(this)}>
-        <option value="0" default>type</option>
-        <option value="1" default>normal</option>
-        <option value="2" default>super effective</option>
-        <option value="4" default>super super effective</option>
+        <option value="0">type</option>
+        <option value="1">normal</option>
+        <option value="2">super effective</option>
+        <option value="4">super super effective</option>
         <option value="0.25">not very effective</option>
         <option value="0">ineffective</option>
         </select>
         <select id="burn" onChange={this.burn.bind(this)}>
-        <option value="0" default>burn</option>
-        <option value="1" default>no</option>
+        <option value="0">burn</option>
+        <option value="1">no</option>
         <option value="0.5">yes</option>
         </select>
 
@@ -253,19 +312,19 @@ render(){
         {stagec(this.state.stageui)}
         stage<input type="number" onChange={this.stageui.bind(this)}/>
         <select id="stage" onChange={this.stage.bind(this)}>
-        <option value="1" default>stage 0</option>
-        <option value="133.33" default>1</option>
-        <option value="166.67" default>2</option>
-        <option value="200" default>3</option>
-        <option value="233.33" default>4</option>
-        <option value="266.67" default>5</option>
-        <option value="300" default>6</option>
-        <option value="75" default>-1</option>
-        <option value="60" default>-2</option>
-        <option value="50" default>-3</option>
-        <option value="43" default>-4</option>
-        <option value="37.5" default>-5</option>
-        <option value="33.3" default>-6</option>
+        <option value="1">stage 0</option>
+        <option value="133.33">1</option>
+        <option value="166.67">2</option>
+        <option value="200">3</option>
+        <option value="233.33">4</option>
+        <option value="266.67">5</option>
+        <option value="300">6</option>
+        <option value="75">-1</option>
+        <option value="60">-2</option>
+        <option value="50">-3</option>
+        <option value="43">-4</option>
+        <option value="37.5">-5</option>
+        <option value="33.3">-6</option>
         </select>
         {stage}
         </div>
@@ -298,9 +357,7 @@ render(){
         <h1>Miss Percentage: {hit}</h1>
       </div>
 
-      h:<Enemy></Enemy>
-      {Enemy.a}{Enemy.b}{Enemy.c}
-      {console.log(Enemy.a)}
+      <Enemy></Enemy>
 
     </div>
   );
