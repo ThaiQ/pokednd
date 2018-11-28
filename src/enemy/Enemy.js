@@ -187,7 +187,7 @@ render(){
     </select>
 
     <select id="enemy" onChange={this.e.bind(this)}>
-    <option value="0">default</option>
+    <option value="0">Enemy: default</option>
     <option value="1">enemy 1</option>
     <option value="2">enemy 2</option>
     <option value="3">enemy 3</option>
@@ -198,8 +198,8 @@ render(){
     <option value="8">enemy 8</option>
     <option value="9">enemy 9</option>
     <option value="10">enemy 10</option>
-    <option value="10">enemy 11</option>
-    <option value="10">enemy 12</option>
+    <option value="11">enemy 11</option>
+    <option value="12">enemy 12</option> 
     </select>
 
     {select(this.state.e)}

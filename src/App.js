@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Enemy from './enemy/Enemy.js';
 import {ans} from './enemy/Enemy.js';
 import {player} from './enemy/Enemy.js';
+import {typeout} from './enemy/type.js';
+import Type from './enemy/type.js';
 import logo from './logo.svg';
 import './App.css';
 
@@ -65,11 +67,6 @@ target(event){
 stab(event){
   this.setState({
     stab:event.target.value,
-  })
-}
-type(event){
-  this.setState({
-    type:event.target.value,
   })
 }
 burn(event){
@@ -207,14 +204,15 @@ render(){
      var weather = document.getElementById("weather");
      var burn = document.getElementById("burn");
      var stab = document.getElementById("stab");
-     var type = document.getElementById("type");
+     //var type = document.getElementById("type");
+     var type = typeout;
 
     if (crit != null) {crit = crit.value;}else {crit = null;}
     if (target != null) {target = target.value;}else {target = null;}
     if (weather != null) {weather = weather.value;}else {weather = null;}
     if (burn != null) {burn = burn.value;}else {burn = null;}
     if (stab != null) {stab = stab.value;}else {stab = null;}
-    if (type != null) {type = type.value;}else {type = null;}
+    //if (type != null) {type = type.value;}else {type = null;}
 
     crit= parseFloat(crit);
     target = parseFloat(target);
@@ -288,14 +286,6 @@ render(){
         <option value="1.5">match</option>
         <option value="2">adaptability</option>
         </select>
-        <select id="type" onChange={this.type.bind(this)}>
-        <option value="0">type</option>
-        <option value="1">normal</option>
-        <option value="2">super effective</option>
-        <option value="4">super super effective</option>
-        <option value="0.25">not very effective</option>
-        <option value="0">ineffective</option>
-        </select>
         <select id="burn" onChange={this.burn.bind(this)}>
         <option value="0">burn</option>
         <option value="1">no</option>
@@ -331,7 +321,7 @@ render(){
 
         <div className="health">
         health:{healthc(this.state.health, this.state.hin)} {hp}<input type="number" onChange={this.health.bind(this)}/>
-        <input type="number" onChange={this.hin.bind(this)}/>
+        - <input type="number" onChange={this.hin.bind(this)}/>
         </div>
       </div>
 
@@ -346,18 +336,22 @@ render(){
       <p className="head">pwr</p><input type="number" onChange={this.power.bind(this)}/>
       </div>
 
+      <div ClassName="type">
+        <Type></Type>
+      </div>
+
       <div className="output">
         {damagec(this.state.power,this.state.def,this.state.sdef,this.state.at,this.state.sat,this.state.lv)}
         {spdamagec(this.state.power,this.state.def,this.state.sdef,this.state.at,this.state.sat,this.state.lv)}
         {modc(this.state.other)}
         {finaldamage()}
         {hit(this.state.accuracy,this.state.evasion,this.state.baseacc)}
+        <Enemy></Enemy>
         <h1>Damage: {damage}</h1>
         <h1>Sp. Damage: {spdamage}</h1>
         <h1>Miss Percentage: {hit}</h1>
       </div>
 
-      <Enemy></Enemy>
 
     </div>
   );
