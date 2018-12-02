@@ -239,7 +239,7 @@ render(){
 
   return(<div>
 
-    <select id="attack" onChange={this.attack.bind(this)}>
+    <select id="attack" value={this.state.attack} onChange={this.attack.bind(this)}>
     <option value="0">attack</option>
     <option value="normal">normal</option>
     <option value="fighting">fighting</option>
@@ -261,7 +261,7 @@ render(){
     <option value="fairy">fairy</option>
     </select>
 
-    <select id="type1" onChange={this.type1.bind(this)}>
+    <select id="type1" value={this.state.type1} onChange={this.type1.bind(this)}>
     <option value="1">EnemyType 1 / Default</option>
     <option value="normal">normal</option>
     <option value="fighting">fighting</option>
@@ -283,7 +283,7 @@ render(){
     <option value="fairy">fairy</option>
     </select>
 
-    <select id="type2" onChange={this.type2.bind(this)}>
+    <select id="type2" value={this.state.type2} onChange={this.type2.bind(this)}>
     <option value="1">EnemyType 2 / Default</option>
     <option value="normal">normal</option>
     <option value="fighting">fighting</option>

@@ -6,6 +6,7 @@ import {typeout} from './enemy/type.js';
 import Type from './enemy/type.js';
 import logo from './logo.svg';
 import './App.css';
+import Stats from './enemy/stats.js';
 
 var spdamage, damage, mod, fdamage, fspdamage, hit;
 var lowerd, higherd, lowersd, highersd, stage, hp;
@@ -154,7 +155,7 @@ render(){
       spatt = ans.spatt;
     }
 
-    damage = (((((2*lv)/5)+2)*power*(att/def))/50)+2;
+    damage = (((((2*lv)/5)+2)*power/8*(att/def))/50)+2;
     damage = parseInt(damage);
   }
   function spdamagec(power, def, spdef, att, spatt, lv){
@@ -194,7 +195,7 @@ render(){
       spatt = ans.spatt;
     }
 
-    spdamage = (((((2*lv)/5)+2)*power*(spatt/spdef))/50)+2;
+    spdamage = (((((2*lv)/5)+2)*power/8*(spatt/spdef))/50)+2;
     spdamage = parseInt(spdamage);
   }
 
@@ -350,8 +351,8 @@ render(){
         <h1>Damage: {damage}</h1>
         <h1>Sp. Damage: {spdamage}</h1>
         <h1>Miss Percentage: {hit}</h1>
+        <Stats></Stats>
       </div>
-
 
     </div>
   );
