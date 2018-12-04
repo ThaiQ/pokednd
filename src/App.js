@@ -350,8 +350,11 @@ render(){
         <Enemy></Enemy>
         <h1>Damage: {damage}</h1>
         <h1>Sp. Damage: {spdamage}</h1>
-        <h1>Miss Percentage: {hit}</h1>
-        <Stats></Stats>
+        <h1>Miss Percentage: {hit}</h1> 
+      </div>
+
+      <div className = "stats">
+      <Stats></Stats>
       </div>
 
     </div>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-var opt;
+var opt=0;
 var name = "";
 var ans=0;
 var player = 0;
@@ -28,6 +28,8 @@ var e={
     spatt:35,
     spdef:35,
     spd: 59,
+    type1st:"electric",
+    type2nd:"none",
   },
   e3:{
     name:"Golbat",
@@ -38,6 +40,8 @@ var e={
     spatt:57,
     spdef:65,
     spd: 77,
+    type1st:"poison",
+    type2nd:"flying",
   },
   e4:{
     name:"Ponyta",
@@ -48,6 +52,8 @@ var e={
     spatt:57,
     spdef:57,
     spd: 77,
+    type1st:"fire",
+    type2nd:"none",
   },
   e5:{
     name:"Magnemite",
@@ -58,6 +64,8 @@ var e={
     spatt:81,
     spdef:49,
     spd: 41,
+    type1st:"electric",
+    type2nd:"steel",
   },
   e6:{
     name:"Electabuzz",
@@ -68,6 +76,8 @@ var e={
     spatt:100,
     spdef:90,
     spd: 110,
+    type1st:"electric",
+    type2nd:"none",
   },
   e7:{
     name:"Magmar",
@@ -78,6 +88,8 @@ var e={
     spatt:105,
     spdef:90,
     spd: 98,
+    type1st:"fire",
+    type2nd:"none",
   },
   e8:{
     name:"Wartortle",
@@ -88,6 +100,8 @@ var e={
     spatt:57,
     spdef:69,
     spd: 51,
+    type1st:"water",
+    type2nd:"none",
   },
   e9:{
     name:"Sandslash",
@@ -98,6 +112,8 @@ var e={
     spatt:41,
     spdef:49,
     spd: 57,
+    type1st:"ground",
+    type2nd:"none",
   },
   e10:{
     name:"Raichu",
@@ -108,6 +124,8 @@ var e={
     spatt:86,
     spdef:86,
     spd: 104,
+    type1st:"electric",
+    type2nd:"none",
   },
   e11:{
     name:"Pinsir",
@@ -118,6 +136,8 @@ var e={
     spatt:65,
     spdef:82,
     spd: 98,
+    type1st:"bug",
+    type2nd:"none",
   },
   e12:{
     name:"Jolteon",
@@ -128,9 +148,10 @@ var e={
     spatt:126,
     spdef:109,
     spd: 148,
+    type1st:"electric",
+    type2nd:"none",
   },
 }
-
 
 
 
@@ -175,24 +196,26 @@ render(){
   }
 
   function which(playersl){
+    player = 0;
+    if (playersl != null) {player = playersl.value;}else {player = 0;}
     player = + playersl;
   }
 
   function name(){
     if (player == 1 && opt != 0){name=ans.name;}
+    else if (player == 1 && opt == 0){name="wild";}
     else{name="";}
   }
 
   return(<div>
 
-    <select id="player" onChange={this.player.bind(this)}>
-    <option value="0">player</option>
-    <option value="0.5">playerVsWild</option>
+    <select id="player" value={this.value} onChange={this.player.bind(this)}>
+    <option value="0" selected>player</option>
     <option value="1">host</option>
     </select>
 
-    <select id="enemy" onChange={this.e.bind(this)}>
-    <option value="0">Enemy: default</option>
+    <select id="enemy" value={this.state.e} onChange={this.e.bind(this)}>
+    <option value="0" selected>Enemy: default</option>
     <option value="1">enemy 1</option>
     <option value="2">enemy 2</option>
     <option value="3">enemy 3</option>
@@ -210,12 +233,17 @@ render(){
     {select(this.state.e)}
     {which(this.state.player)}
     {name()}
+
+    {player}
+    {opt} -- 00
+
     <p>{name}</p>
 
     </div>);
   }
 }
 
+export{opt};
 export {player};
 export {ans};
 export {type1st};

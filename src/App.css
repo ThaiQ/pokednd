@@ -44,3 +44,10 @@
 .type{
   margin: 0px;
 }
+.stats{
+  float: left;
+  border: 2px solid purple;
+}
+input {
+    width: 100%;
+}
