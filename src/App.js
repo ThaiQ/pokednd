@@ -7,9 +7,11 @@ import Type from './enemy/type.js';
 import logo from './logo.svg';
 import './App.css';
 import Stats from './enemy/stats.js';
+import Dis from './enemy/dis.js';
 
 var spdamage, damage, mod, fdamage, fspdamage, hit;
 var lowerd, higherd, lowersd, highersd, stage, hp;
+var key;
 
 class App extends Component {
 
@@ -113,6 +115,11 @@ health(event){
 hin(event){
   this.setState({
     hin:event.target.value,
+  })
+}
+keyi(event){
+  this.setState({
+    keyi:event.target.value,
   })
 }
 
@@ -261,6 +268,12 @@ render(){
     hp = health - input;
   }
 
+  function keyf(name){
+    var nam = name;
+    if (nam == "h"){key = true;}
+    else{key=false;}
+  }
+
   return(
     <div className="App">
       <div className="option">
@@ -327,7 +340,7 @@ render(){
       </div>
 
       <div className="input">
-      <p className="head">Name:</p><input type="text"/>
+      <p className="head">Name:</p><input type="text" onChange={this.keyi.bind(this)}/>
       <p className="head">lv</p><input type="number" onChange={this.level.bind(this)}/>
       <p className="head">Target def</p><input type="number" onChange={this.def.bind(this)}/>
       <p className="head">Target sp.def</p><input type="number" onChange={this.sdef.bind(this)}/>
@@ -337,7 +350,7 @@ render(){
       <p className="head">pwr</p><input type="number" onChange={this.power.bind(this)}/>
       </div>
 
-      <div ClassName="type">
+      <div className="type">
         <Type></Type>
       </div>
 
@@ -347,19 +360,21 @@ render(){
         {modc(this.state.other)}
         {finaldamage()}
         {hit(this.state.accuracy,this.state.evasion,this.state.baseacc)}
+        {keyf(this.state.keyi)}
         <Enemy></Enemy>
         <h1>Damage: {damage}</h1>
         <h1>Sp. Damage: {spdamage}</h1>
-        <h1>Miss Percentage: {hit}</h1> 
+        <h1>Miss Percentage: {hit}</h1>
       </div>
 
       <div className = "stats">
       <Stats></Stats>
       </div>
-
+      <Dis></Dis>
     </div>
   );
 }
 }
 
+export {key};
 export default App;

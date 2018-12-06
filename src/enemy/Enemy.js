@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import Dis from './dis.js';
+import {key} from '../App.js';
+
 var opt=0;
+var lv ="";
 var name = "";
 var ans=0;
 var player = 0;
@@ -202,13 +206,12 @@ render(){
   }
 
   function name(){
-    if (player == 1 && opt != 0){name=ans.name;}
-    else if (player == 1 && opt == 0){name="wild";}
-    else{name="";}
+    if (player == 1 && opt != 0 && key==true){name=ans.name; lv=ans.lv;}
+    else if (player == 1 && opt == 0 && key==true){name="wild"}
+    else{}
   }
 
   return(<div>
-
     <select id="player" value={this.value} onChange={this.player.bind(this)}>
     <option value="NaN">Play?</option>
     <option value="0">player</option>
@@ -238,8 +241,7 @@ render(){
 
     {player}
     {opt} -- 00
-
-    <p>{name}</p>
+    <p>{name} {lv}</p>
 
     </div>);
   }

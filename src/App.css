@@ -15,31 +15,37 @@
   float: left;
   width: 160px;
   border: 2px solid blue;
+  background: blue;
 }
 .input{
   width: 160px;
   float: left;
   border: 2px solid yellow;
+  background: yellow;
 }
 .output{
   //width: 250px;
   float: left;
   border: 2px solid green;
+  background: green;
 }
 .acc{
   width: 160px;
   float: left;
   border: 2px solid purple;
+  background: purple;
 }
 .stage{
   width: 160px;
   float: left;
   border: 2px solid lightblue;
+  background: lightblue;
 }
 .health{
   width: 160px;
   float: left;
   border: 2px solid lime;
+  background: lime;
 }
 .type{
   margin: 0px;
@@ -47,6 +53,7 @@
 .stats{
   float: left;
   border: 2px solid purple;
+  background: purple
 }
 input {
     width: 100%;
