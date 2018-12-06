@@ -210,12 +210,14 @@ render(){
   return(<div>
 
     <select id="player" value={this.value} onChange={this.player.bind(this)}>
-    <option value="0" selected>player</option>
+    <option value="NaN">Play?</option>
+    <option value="0">player</option>
     <option value="1">host</option>
     </select>
 
     <select id="enemy" value={this.state.e} onChange={this.e.bind(this)}>
-    <option value="0" selected>Enemy: default</option>
+    <option value="NaN">Enemy?</option>
+    <option value="0">Enemy: default</option>
     <option value="1">enemy 1</option>
     <option value="2">enemy 2</option>
     <option value="3">enemy 3</option>
@@ -243,7 +245,7 @@ render(){
   }
 }
 
-export{opt};
+export {opt};
 export {player};
 export {ans};
 export {type1st};
