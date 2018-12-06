@@ -7,8 +7,6 @@ var lv ="";
 var name = "";
 var ans=0;
 var player = 0;
-var type1st ="";
-var type2nd ="";
 
 var e={
   e1:{
@@ -20,8 +18,8 @@ var e={
     spatt:75,
     spdef:61,
     spd: 71,
-    type1st:"fire",
-    type2nd:"none",
+    type1:"fire",
+    type2:"none",
   },
   e2:{
     name:"Pikachu",
@@ -32,8 +30,8 @@ var e={
     spatt:35,
     spdef:35,
     spd: 59,
-    type1st:"electric",
-    type2nd:"none",
+    type1:"electric",
+    type2:"none",
   },
   e3:{
     name:"Golbat",
@@ -44,8 +42,8 @@ var e={
     spatt:57,
     spdef:65,
     spd: 77,
-    type1st:"poison",
-    type2nd:"flying",
+    type1:"poison",
+    type2:"flying",
   },
   e4:{
     name:"Ponyta",
@@ -56,8 +54,8 @@ var e={
     spatt:57,
     spdef:57,
     spd: 77,
-    type1st:"fire",
-    type2nd:"none",
+    type1:"fire",
+    type2:"none",
   },
   e5:{
     name:"Magnemite",
@@ -68,8 +66,8 @@ var e={
     spatt:81,
     spdef:49,
     spd: 41,
-    type1st:"electric",
-    type2nd:"steel",
+    type1:"electric",
+    type2:"steel",
   },
   e6:{
     name:"Electabuzz",
@@ -80,8 +78,8 @@ var e={
     spatt:100,
     spdef:90,
     spd: 110,
-    type1st:"electric",
-    type2nd:"none",
+    type1:"electric",
+    type2:"none",
   },
   e7:{
     name:"Magmar",
@@ -92,8 +90,8 @@ var e={
     spatt:105,
     spdef:90,
     spd: 98,
-    type1st:"fire",
-    type2nd:"none",
+    type1:"fire",
+    type2:"none",
   },
   e8:{
     name:"Wartortle",
@@ -104,8 +102,8 @@ var e={
     spatt:57,
     spdef:69,
     spd: 51,
-    type1st:"water",
-    type2nd:"none",
+    type1:"water",
+    type2:"none",
   },
   e9:{
     name:"Sandslash",
@@ -116,8 +114,8 @@ var e={
     spatt:41,
     spdef:49,
     spd: 57,
-    type1st:"ground",
-    type2nd:"none",
+    type1:"ground",
+    type2:"none",
   },
   e10:{
     name:"Raichu",
@@ -128,8 +126,8 @@ var e={
     spatt:86,
     spdef:86,
     spd: 104,
-    type1st:"electric",
-    type2nd:"none",
+    type1:"electric",
+    type2:"none",
   },
   e11:{
     name:"Pinsir",
@@ -140,8 +138,8 @@ var e={
     spatt:65,
     spdef:82,
     spd: 98,
-    type1st:"bug",
-    type2nd:"none",
+    type1:"bug",
+    type2:"none",
   },
   e12:{
     name:"Jolteon",
@@ -152,8 +150,32 @@ var e={
     spatt:126,
     spdef:109,
     spd: 148,
-    type1st:"electric",
-    type2nd:"none",
+    type1:"electric",
+    type2:"none",
+  },
+  e13:{
+    name:"Ray",
+    lv:100,
+    hp:11,
+    att:45,
+    def:45,
+    spatt:29,
+    spdef:29,
+    spd: 10,
+    type1:"flying",
+    type2:"dragon",
+  },
+  e14:{
+    name:"MRay",
+    lv:100,
+    hp:11,
+    att:48,
+    def:48,
+    spatt:20,
+    spdef:20,
+    spd: 54,
+    type1:"flying",
+    type2:"dragon",
   },
 }
 
@@ -184,18 +206,20 @@ render(){
     if (opt != null) {opt = opt.value;}else {opt = 0;}
     opt = +option;
     if (opt==0){ans=0;}
-    else if (opt==1){ans=e.e1;type1st=e.e1.type1st;type2nd=e.e1.type2nd;}
-    else if (opt==2){ans=e.e2;type1st=e.e2.type1st;type2nd=e.e2.type2nd;}
-    else if (opt==3){ans=e.e3;type1st=e.e3.type1st;type2nd=e.e3.type2nd;}
-    else if (opt==4){ans=e.e4;type1st=e.e4.type1st;type2nd=e.e4.type2nd;}
-    else if (opt==5){ans=e.e5;type1st=e.e5.type1st;type2nd=e.e5.type2nd;}
-    else if (opt==6){ans=e.e6;type1st=e.e6.type1st;type2nd=e.e6.type2nd;}
-    else if (opt==7){ans=e.e7;type1st=e.e7.type1st;type2nd=e.e7.type2nd;}
-    else if (opt==8){ans=e.e8;type1st=e.e8.type1st;type2nd=e.e8.type2nd;}
-    else if (opt==9){ans=e.e9;type1st=e.e9.type1st;type2nd=e.e9.type2nd;}
-    else if (opt==10){ans=e.e10;type1st=e.e10.type1st;type2nd=e.e10.type2nd;}
-    else if (opt==11){ans=e.e11;type1st=e.e11.type1st;type2nd=e.e11.type2nd;}
-    else if (opt==12){ans=e.e12;type1st=e.e12.type1st;type2nd=e.e12.type2nd;}
+    else if (opt==1){ans=e.e1;}
+    else if (opt==2){ans=e.e2;}
+    else if (opt==3){ans=e.e3;}
+    else if (opt==4){ans=e.e4;}
+    else if (opt==5){ans=e.e5;}
+    else if (opt==6){ans=e.e6;}
+    else if (opt==7){ans=e.e7;}
+    else if (opt==8){ans=e.e8;}
+    else if (opt==9){ans=e.e9;}
+    else if (opt==10){ans=e.e10;}
+    else if (opt==11){ans=e.e11;}
+    else if (opt==12){ans=e.e12;}
+    else if (opt==13){ans=e.e13;}
+    else if (opt==14){ans=e.e14;}
     else{ans=0;}
   }
 
@@ -233,6 +257,8 @@ render(){
     <option value="10">enemy 10</option>
     <option value="11">enemy 11</option>
     <option value="12">enemy 12</option>
+    <option value="13">enemy 13</option>
+    <option value="14">enemy 14</option>
     </select>
 
     {select(this.state.e)}
@@ -250,6 +276,4 @@ render(){
 export {opt};
 export {player};
 export {ans};
-export {type1st};
-export {type2nd};
 export default Enemy;

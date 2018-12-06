@@ -3,6 +3,10 @@ import {type1st} from './Enemy.js';
 import {type2nd} from './Enemy.js';
 import {player} from './Enemy.js';
 import {opt} from './Enemy.js';
+import {ans} from './Enemy.js';
+import {playerans} from './player.js';
+import {playeropt} from './player.js';
+import {key} from '../App.js';
 
 var d1 = 0;
 var d2 = 0;
@@ -40,11 +44,19 @@ render(){
     if (att != null) {att = att.value;}else {att = 0;}
     if (type1 != null) {type1 = type1.value;}else {type1 = 0;}
     if (type2 != null) {type2 = type2.value;}else {type2 = 0;}}
-    else if (player == 0 && opt != 0){
+    else if (player == 0 && opt != 0 && key == true){
       if (att != null) {att = att.value;}else {att = 0;}
-      type1 = type1st;
-      type2 = type2nd;
-    }
+      type1 = ans.type1;
+      type2 = ans.type2;
+    }else if (player == 1 && playeropt != 0){
+      if (att != null) {att = att.value;}else {att = 0;}
+      type1 = playerans.type1;
+      type2 = playerans.type2;
+    }else{
+      if (att != null) {att = att.value;}else {att = 0;}
+      if (type1 != null) {type1 = type1.value;}else {type1 = 0;}
+      if (type2 != null) {type2 = type2.value;}else {type2 = 0;}}
+
 
     if (att == "normal"){
       if (type1=="rock" || type1=="steel"){d1=0.5;}

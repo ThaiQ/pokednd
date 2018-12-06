@@ -8,6 +8,8 @@ import logo from './logo.svg';
 import './App.css';
 import Stats from './enemy/stats.js';
 import Dis from './enemy/dis.js';
+import Player from './enemy/player.js';
+import {playerans} from './enemy/player.js';
 
 var spdamage, damage, mod, fdamage, fspdamage, hit;
 var lowerd, higherd, lowersd, highersd, stage, hp;
@@ -127,14 +129,14 @@ render(){
 
   function damagec(power, def, spdef, att, spatt, lv){
 
-    if(player==0 && ans==0){
+    if(player==0 && ans==0 && key==false){
       var power = + power;
       var att = + att;
       var spatt = + spatt
       var lv = + lv;
       var def = + def;
       var spdef = + spdef;
-    } else if (player==0 && ans!=0){
+    } else if (player==0 && ans!=0 && key==false){
       var power = + power;
       var att = + att;
       var spatt = + spatt
@@ -143,14 +145,14 @@ render(){
       var spdef = + spdef;
       def = + ans.def;
       spdef = + ans.spdef;
-    } else if (player==1 && ans==0) {
+    } else if (player==1 && ans==0 && key==true) {
       var power = + power;
       var att = + att;
       var spatt = + spatt
       var lv = + lv;
       var def = + def;
       var spdef = + spdef;
-    } else if (player==1 && ans!=0) {
+    } else if (player==1 && ans!=0 && key==true) {
       var power = + power;
       var att = + att;
       var spatt = + spatt
@@ -181,6 +183,10 @@ render(){
       var lv = + lv;
       var def = + def;
       var spdef = + spdef;
+
+      att = + playerans.att;
+      spatt = + playerans.spatt
+      lv = + playerans.lv;
       def = + ans.def;
       spdef = + ans.spdef;
     } else if (player==1 && ans==0) {
@@ -197,9 +203,12 @@ render(){
       var lv = + lv;
       var def = + def;
       var spdef = + spdef;
+
       lv = ans.lv;
       att = ans.att;
       spatt = ans.spatt;
+      def = playerans.def;
+      spdef = playerans.spdef;
     }
 
     spdamage = (((((2*lv)/5)+2)*power/8*(spatt/spdef))/50)+2;
@@ -229,6 +238,7 @@ render(){
     stab = parseFloat(stab);
     type = parseFloat(type);
     var other = parseFloat(other);
+    other = ((100+(other*10))/100);
 
     mod=crit*target*weather*burn*stab*type*other;
   }
@@ -236,8 +246,8 @@ render(){
   function random(min,max){return Math.floor(Math.random()*(max-min+1)+min);}
 
   function finaldamage(){
-    lowerd=damage*mod*0.85;
-    lowersd=spdamage*mod*0.85;
+    lowerd=damage*mod*0.85; //0.85
+    lowersd=spdamage*mod*0.85;//0.85
     higherd=damage*mod*1;
     highersd=spdamage*mod*1;
     damage=random(lowerd,higherd);
@@ -346,7 +356,7 @@ render(){
       <p className="head">Target sp.def</p><input type="number" onChange={this.sdef.bind(this)}/>
       <p className="head">att</p><input type="number" onChange={this.at.bind(this)}/>
       <p className="head">sp.att</p><input type="number" onChange={this.sat.bind(this)}/>
-      <p className="head">other</p><input type="number" onChange={this.other.bind(this)}/>
+      <p className="head">Bonus</p><input type="number" onChange={this.other.bind(this)}/>
       <p className="head">pwr</p><input type="number" onChange={this.power.bind(this)}/>
       </div>
 
@@ -362,6 +372,7 @@ render(){
         {hit(this.state.accuracy,this.state.evasion,this.state.baseacc)}
         {keyf(this.state.keyi)}
         <Enemy></Enemy>
+        <Player></Player>
         <h1>Damage: {damage}</h1>
         <h1>Sp. Damage: {spdamage}</h1>
         <h1>Miss Percentage: {hit}</h1>
