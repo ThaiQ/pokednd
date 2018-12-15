@@ -44,11 +44,11 @@ render(){
     if (att != null) {att = att.value;}else {att = 0;}
     if (type1 != null) {type1 = type1.value;}else {type1 = 0;}
     if (type2 != null) {type2 = type2.value;}else {type2 = 0;}}
-    else if (player == 0 && opt != 0 && key == true){
+    else if (player == 0 && opt != 0){
       if (att != null) {att = att.value;}else {att = 0;}
       type1 = ans.type1;
       type2 = ans.type2;
-    }else if (player == 1 && playeropt != 0){
+    }else if (player == 1 && playeropt != 0 && key == true){
       if (att != null) {att = att.value;}else {att = 0;}
       type1 = playerans.type1;
       type2 = playerans.type2;

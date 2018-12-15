@@ -19,8 +19,8 @@ render(){
       def="def: "+ans.def;
       spdef="sp.def: "+ans.spdef;
       spd="spd: "+ans.spd;
-      type1="type1: "+ans.type1st;
-      type2="type2: "+ans.type2nd;
+      type1="type1: "+ans.type1;
+      type2="type2: "+ans.type2;
     }
     else if (player == 1 && opt == 0 && key==true){name="wild"}
     else{}

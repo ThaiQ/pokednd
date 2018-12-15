@@ -52,7 +52,7 @@ render(){
 
   function name(){
     if (player == 0 && playeropt != 0 && key==false){name=playerans.name; lv=playerans.lv;}
-    else if (player == 0 && playeropt == 0 && key==false){name="Choose Pokemon"}
+    else if (player == 0 && playeropt == 0 && key==false){name="Choose Pokemon"; lv="";}
     else{}
   }
 

@@ -9,6 +9,18 @@ var ans=0;
 var player = 0;
 
 var e={
+  e01:{
+    name:"default",
+    lv:35,
+    hp:108,
+    att:82,
+    def:61,
+    spatt:75,
+    spdef:61,
+    spd: 71,
+    type1:"grass",
+    type2:"none",
+  },
   e1:{
     name:"Arcanine",
     lv:35,
@@ -206,6 +218,7 @@ render(){
     if (opt != null) {opt = opt.value;}else {opt = 0;}
     opt = +option;
     if (opt==0){ans=0;}
+    else if (opt==0.1){ans=e.e01;}
     else if (opt==1){ans=e.e1;}
     else if (opt==2){ans=e.e2;}
     else if (opt==3){ans=e.e3;}
@@ -245,6 +258,7 @@ render(){
     <select id="enemy" value={this.state.e} onChange={this.e.bind(this)}>
     <option value="NaN">Enemy?</option>
     <option value="0">Enemy: default</option>
+    <option value="0.1">Enemy: default 1</option>
     <option value="1">enemy 1</option>
     <option value="2">enemy 2</option>
     <option value="3">enemy 3</option>

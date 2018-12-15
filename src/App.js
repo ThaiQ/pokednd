@@ -129,39 +129,46 @@ render(){
 
   function damagec(power, def, spdef, att, spatt, lv){
 
-    if(player==0 && ans==0 && key==false){
+    if(player==0 && ans==0){
       var power = + power;
       var att = + att;
       var spatt = + spatt
       var lv = + lv;
       var def = + def;
       var spdef = + spdef;
-    } else if (player==0 && ans!=0 && key==false){
+    } else if (player==0 && ans!=0){
       var power = + power;
       var att = + att;
       var spatt = + spatt
       var lv = + lv;
       var def = + def;
       var spdef = + spdef;
+
+      att = + playerans.att;
+      spatt = + playerans.spatt
+      lv = + playerans.lv;
       def = + ans.def;
       spdef = + ans.spdef;
-    } else if (player==1 && ans==0 && key==true) {
+    } else if (player==1 && ans==0) {
       var power = + power;
       var att = + att;
       var spatt = + spatt
       var lv = + lv;
       var def = + def;
       var spdef = + spdef;
-    } else if (player==1 && ans!=0 && key==true) {
+    } else if (player==1 && ans!=0) {
       var power = + power;
       var att = + att;
       var spatt = + spatt
       var lv = + lv;
       var def = + def;
       var spdef = + spdef;
+
       lv = ans.lv;
       att = ans.att;
       spatt = ans.spatt;
+      def = playerans.def;
+      spdef = playerans.spdef;
     }
 
     damage = (((((2*lv)/5)+2)*power/8*(att/def))/50)+2;
@@ -381,7 +388,11 @@ render(){
       <div className = "stats">
       <Stats></Stats>
       </div>
+
+      <div className = "display">
       <Dis></Dis>
+      </div>
+
     </div>
   );
 }
