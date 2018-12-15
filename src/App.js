@@ -7,9 +7,13 @@ import Type from './enemy/type.js';
 import logo from './logo.svg';
 import './App.css';
 import Stats from './enemy/stats.js';
+import Dis from './enemy/dis.js';
+import Player from './enemy/player.js';
+import {playerans} from './enemy/player.js';
 
 var spdamage, damage, mod, fdamage, fspdamage, hit;
 var lowerd, higherd, lowersd, highersd, stage, hp;
+var key;
 
 class App extends Component {
 
@@ -115,6 +119,11 @@ hin(event){
     hin:event.target.value,
   })
 }
+keyi(event){
+  this.setState({
+    keyi:event.target.value,
+  })
+}
 
 render(){
 
@@ -134,6 +143,10 @@ render(){
       var lv = + lv;
       var def = + def;
       var spdef = + spdef;
+
+      att = + playerans.att;
+      spatt = + playerans.spatt
+      lv = + playerans.lv;
       def = + ans.def;
       spdef = + ans.spdef;
     } else if (player==1 && ans==0) {
@@ -150,9 +163,12 @@ render(){
       var lv = + lv;
       var def = + def;
       var spdef = + spdef;
+
       lv = ans.lv;
       att = ans.att;
       spatt = ans.spatt;
+      def = playerans.def;
+      spdef = playerans.spdef;
     }
 
     damage = (((((2*lv)/5)+2)*power/8*(att/def))/50)+2;
@@ -174,6 +190,10 @@ render(){
       var lv = + lv;
       var def = + def;
       var spdef = + spdef;
+
+      att = + playerans.att;
+      spatt = + playerans.spatt
+      lv = + playerans.lv;
       def = + ans.def;
       spdef = + ans.spdef;
     } else if (player==1 && ans==0) {
@@ -190,9 +210,12 @@ render(){
       var lv = + lv;
       var def = + def;
       var spdef = + spdef;
+
       lv = ans.lv;
       att = ans.att;
       spatt = ans.spatt;
+      def = playerans.def;
+      spdef = playerans.spdef;
     }
 
     spdamage = (((((2*lv)/5)+2)*power/8*(spatt/spdef))/50)+2;
@@ -222,6 +245,7 @@ render(){
     stab = parseFloat(stab);
     type = parseFloat(type);
     var other = parseFloat(other);
+    other = ((100+(other*10))/100);
 
     mod=crit*target*weather*burn*stab*type*other;
   }
@@ -229,8 +253,8 @@ render(){
   function random(min,max){return Math.floor(Math.random()*(max-min+1)+min);}
 
   function finaldamage(){
-    lowerd=damage*mod*0.85;
-    lowersd=spdamage*mod*0.85;
+    lowerd=damage*mod*0.85; //0.85
+    lowersd=spdamage*mod*0.85;//0.85
     higherd=damage*mod*1;
     highersd=spdamage*mod*1;
     damage=random(lowerd,higherd);
@@ -259,6 +283,12 @@ render(){
     var health = + health;
     var input = + input;
     hp = health - input;
+  }
+
+  function keyf(name){
+    var nam = name;
+    if (nam == "h"){key = true;}
+    else{key=false;}
   }
 
   return(
@@ -327,17 +357,17 @@ render(){
       </div>
 
       <div className="input">
-      <p className="head">Name:</p><input type="text"/>
+      <p className="head">Name:</p><input type="text" onChange={this.keyi.bind(this)}/>
       <p className="head">lv</p><input type="number" onChange={this.level.bind(this)}/>
       <p className="head">Target def</p><input type="number" onChange={this.def.bind(this)}/>
       <p className="head">Target sp.def</p><input type="number" onChange={this.sdef.bind(this)}/>
       <p className="head">att</p><input type="number" onChange={this.at.bind(this)}/>
       <p className="head">sp.att</p><input type="number" onChange={this.sat.bind(this)}/>
-      <p className="head">other</p><input type="number" onChange={this.other.bind(this)}/>
+      <p className="head">Bonus</p><input type="number" onChange={this.other.bind(this)}/>
       <p className="head">pwr</p><input type="number" onChange={this.power.bind(this)}/>
       </div>
 
-      <div ClassName="type">
+      <div className="type">
         <Type></Type>
       </div>
 
@@ -347,14 +377,20 @@ render(){
         {modc(this.state.other)}
         {finaldamage()}
         {hit(this.state.accuracy,this.state.evasion,this.state.baseacc)}
+        {keyf(this.state.keyi)}
         <Enemy></Enemy>
+        <Player></Player>
         <h1>Damage: {damage}</h1>
         <h1>Sp. Damage: {spdamage}</h1>
-        <h1>Miss Percentage: {hit}</h1> 
+        <h1>Miss Percentage: {hit}</h1>
       </div>
 
       <div className = "stats">
       <Stats></Stats>
+      </div>
+
+      <div className = "display">
+      <Dis></Dis>
       </div>
 
     </div>
@@ -362,4 +398,5 @@ render(){
 }
 }
 
+export {key};
 export default App;
