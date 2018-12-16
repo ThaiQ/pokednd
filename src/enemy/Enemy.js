@@ -10,7 +10,7 @@ var player = 0;
 
 var e={
   e01:{
-    name:"default",
+    name:"manual lv1",
     lv:35,
     hp:108,
     att:82,
@@ -18,8 +18,44 @@ var e={
     spatt:75,
     spdef:61,
     spd: 71,
-    type1:"grass",
-    type2:"none",
+    type1:"null",
+    type2:"null",
+  },
+  e02:{
+    name:"manual lv2",
+    lv:35,
+    hp:108,
+    att:82,
+    def:61,
+    spatt:75,
+    spdef:61,
+    spd: 71,
+    type1:"null",
+    type2:"null",
+  },
+  e03:{
+    name:"manual lv3",
+    lv:35,
+    hp:108,
+    att:82,
+    def:61,
+    spatt:75,
+    spdef:61,
+    spd: 71,
+    type1:"null",
+    type2:"null",
+  },
+  e04:{
+    name:"manual lv4",
+    lv:35,
+    hp:108,
+    att:82,
+    def:61,
+    spatt:75,
+    spdef:61,
+    spd: 71,
+    type1:"null",
+    type2:"null",
   },
   e1:{
     name:"Arcanine",
@@ -219,6 +255,9 @@ render(){
     opt = +option;
     if (opt==0){ans=0;}
     else if (opt==0.1){ans=e.e01;}
+    else if (opt==0.1){ans=e.e02;}
+    else if (opt==0.1){ans=e.e03;}
+    else if (opt==0.1){ans=e.e04;}
     else if (opt==1){ans=e.e1;}
     else if (opt==2){ans=e.e2;}
     else if (opt==3){ans=e.e3;}
@@ -257,8 +296,11 @@ render(){
 
     <select id="enemy" value={this.state.e} onChange={this.e.bind(this)}>
     <option value="NaN">Enemy?</option>
-    <option value="0">Enemy: default</option>
+    <option value="0">Enemy: manual</option>
     <option value="0.1">Enemy: default 1</option>
+    <option value="0.2">Enemy: default 2</option>
+    <option value="0.3">Enemy: default 3</option>
+    <option value="0.4">Enemy: default 4</option>
     <option value="1">enemy 1</option>
     <option value="2">enemy 2</option>
     <option value="3">enemy 3</option>

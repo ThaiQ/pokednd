@@ -392,7 +392,7 @@ render(){
       <div className = "display">
       <Dis></Dis>
       </div>
-
+      
     </div>
   );
 }

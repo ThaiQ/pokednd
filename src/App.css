@@ -1,7 +1,8 @@
 .App {
   width: 400px;
-  background: white;
-  display: inline-block;
+  //height: 400px;
+  background: lightgreen;
+  //display: inline-block;
   text-align: center;
   float: left;
   border: red;
@@ -18,7 +19,7 @@
   background: blue;
 }
 .input{
-  width: 160px;
+  width: 200px;
   float: left;
   border: 2px solid yellow;
   background: yellow;
@@ -48,13 +49,19 @@
   background: lime;
 }
 .type{
-  margin: 0px;
+  margin-top: 370px;
+  background: #653ee0;
 }
 .stats{
+  width: 120px;
   float: left;
   border: 2px solid purple;
-  background: purple
+  background: purple;
 }
 input {
-    width: 100%;
+    width: 80%;
+}
+.display{
+  width: 400px;
+  height: 100%;
 }

@@ -68,7 +68,6 @@ render(){
     {select(this.state.e)}
     {name()}
 
-    {playeropt}
     <p>{name} {lv}</p>
 
     </div>);

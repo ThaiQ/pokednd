@@ -26,7 +26,9 @@ render(){
     else{}
   }
 
-  return(<div>
+  return(<div className="display">
+
+    <img src="../img/pokeball.png" alt="pokeball" width="200" height="200"></img>
 
     {displace()}
     <p>{name}</p>
