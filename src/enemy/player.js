@@ -10,15 +10,27 @@ var playerans=0;
 
 var e={
   e1:{
-    name:"salamence",
-    lv:35,
-    hp:108,
-    att:82,
-    def:61,
-    spatt:75,
-    spdef:61,
-    spd: 71,
-    type1:"fire",
+    name:"mimikyu",
+    lv:80,
+    hp:19,
+    att:24,
+    def:21,
+    spatt:18,
+    spdef:24,
+    spd: 23,
+    type1:"ghost",
+    type2:"fairy",
+  },
+  e2:{
+    name:"drag.",
+    lv:80,
+    hp:34,
+    att:21,
+    def:15,
+    spatt:16,
+    spdef:15,
+    spd: 16,
+    type1:"dragon",
     type2:"none",
   }
 }
@@ -46,6 +58,7 @@ render(){
     playeropt = +option;
     if (playeropt==0){playerans=0;}
     else if (playeropt==1){playerans=e.e1;}
+    else if (playeropt==2){playerans=e.e2;}
 
     else{playerans=0;}
   }
@@ -61,7 +74,8 @@ render(){
     <select id="enemy" value={this.state.e} onChange={this.e.bind(this)}>
     <option value="NaN">Player's Poke</option>
     <option value="0">NotInData</option>
-    <option value="1">salamence</option>
+    <option value="1">mimikyu</option>
+    <option value="2">drag.</option>
 
     </select>
 
