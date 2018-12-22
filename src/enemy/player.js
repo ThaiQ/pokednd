@@ -29,29 +29,49 @@ var fairy = "fairy";
 
 var e={
   e1:{
-    name:"mimikyu",
-    lv:80,
-    hp:19,
-    att:24,
-    def:21,
-    spatt:18,
-    spdef:24,
-    spd: 23,
-    type1:ghost,
-    type2:fairy,
-  },
-  e2:{
-    name:"drag.",
-    lv:80,
-    hp:34,
-    att:21,
-    def:15,
-    spatt:16,
-    spdef:15,
-    spd: 16,
-    type1:dragon,
-    type2:none,
-  }
+    name:	"mienshao"	,
+lv:	40	,
+hp:	12	,
+att:	33	,
+def:	11	,
+spatt:	15	,
+spdef:	6	,
+spd: 	16	,
+type1:	fighting	,
+type2:	none	,
+},e2:{
+    name:	"sceptile"	,
+lv:	40	,
+hp:	13	,
+att:	17	,
+def:	13	,
+spatt:	17	,
+spdef:	15	,
+spd: 	20	,
+type1:	grass	,
+type2:	none	,
+},e3:{
+  name:	"metang"	,
+lv:	40	,
+hp:	11	,
+att:	18	,
+def: 6	,
+spatt:	30	,
+spdef:	13	,
+spd: 	5	,
+type1:	steel	,
+type2:	none	,
+},e4:{
+  name:	"sceptile H."	,
+lv:	40	,
+hp:	7	,
+att:	9	,
+def: 7	,
+spatt:	11	,
+spdef:	9	,
+spd: 	52	,
+type1:	grass	,
+type2:	none	,
 }
 
 
@@ -78,6 +98,8 @@ render(){
     if (playeropt==0){playerans=0;}
     else if (playeropt==1){playerans=e.e1;}
     else if (playeropt==2){playerans=e.e2;}
+    else if (playeropt==3){playerans=e.e3;}
+    else if (playeropt==4){playerans=e.e4;}
 
     else{playerans=0;}
   }
@@ -94,7 +116,9 @@ render(){
     <option value="NaN">Player's Poke</option>
     <option value="0">NotInData</option>
     <option value="1">mimikyu</option>
-    <option value="2">drag.</option>
+    <option value="2">septile</option>
+    <option value="3">metang</option>
+    <option value="4">septile H.</option>
 
     </select>
 
