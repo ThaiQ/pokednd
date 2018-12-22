@@ -38,7 +38,7 @@ render(){
     opt = document.getElementById("which");
     if (opt != null) {opt = opt.value;}else {opt = "hp";}
     if (opt == "hp"){
-      result=((2 * stats) * lv * (i+1) / 100 + lv + 10) + 5;
+      result=((1 * stats) * lv  / 100 + lv) + 10*(i+1);
     }else{
       result=((2 * stats) * lv * (i+1) / 100 + lv + 5);
     }

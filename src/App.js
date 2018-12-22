@@ -129,14 +129,14 @@ render(){
 
   function damagec(power, def, spdef, att, spatt, lv){
 
-    if(player==0 && ans==0){
+    if(player==0 && ans==0 && playerans==0 && key==false){
       var power = + power;
       var att = + att;
       var spatt = + spatt
       var lv = + lv;
       var def = + def;
       var spdef = + spdef;
-    } else if (player==0 && ans!=0){
+    } else if (player==0 && ans!=0 && playerans!=0 && key==false){
       var power = + power;
       var att = + att;
       var spatt = + spatt
@@ -149,14 +149,24 @@ render(){
       lv = + playerans.lv;
       def = + ans.def;
       spdef = + ans.spdef;
-    } else if (player==1 && ans==0) {
+    }else if (player==0 && ans!=0 && playerans==0 && key==false){
       var power = + power;
       var att = + att;
       var spatt = + spatt
       var lv = + lv;
       var def = + def;
       var spdef = + spdef;
-    } else if (player==1 && ans!=0) {
+
+      def = + ans.def;
+      spdef = + ans.spdef;
+    }else if (player==1 && ans==0 && playerans==0 && key==true) {
+      var power = + power;
+      var att = + att;
+      var spatt = + spatt
+      var lv = + lv;
+      var def = + def;
+      var spdef = + spdef;
+    } else if (player==1 && ans!=0 && playerans!=0 && key==true) {
       var power = + power;
       var att = + att;
       var spatt = + spatt
@@ -169,55 +179,28 @@ render(){
       spatt = ans.spatt;
       def = playerans.def;
       spdef = playerans.spdef;
+    }else if (player==1 && ans!=0 && playerans==0 && key==true) {
+      var power = + power;
+      var att = + att;
+      var spatt = + spatt
+      var lv = + lv;
+      var def = + def;
+      var spdef = + spdef;
+
+      lv = ans.lv;
+      att = ans.att;
+      spatt = ans.spatt;
+    }else{
+      var power = + power;
+      var att = + att;
+      var spatt = + spatt
+      var lv = + lv;
+      var def = + def;
+      var spdef = + spdef;
     }
 
     damage = (((((2*lv)/5)+2)*power/8*(att/def))/50)+2;
     damage = parseInt(damage);
-  }
-  function spdamagec(power, def, spdef, att, spatt, lv){
-
-    if(player==0 && ans==0){
-      var power = + power;
-      var att = + att;
-      var spatt = + spatt
-      var lv = + lv;
-      var def = + def;
-      var spdef = + spdef;
-    } else if (player==0 && ans!=0){
-      var power = + power;
-      var att = + att;
-      var spatt = + spatt
-      var lv = + lv;
-      var def = + def;
-      var spdef = + spdef;
-
-      att = + playerans.att;
-      spatt = + playerans.spatt
-      lv = + playerans.lv;
-      def = + ans.def;
-      spdef = + ans.spdef;
-    } else if (player==1 && ans==0) {
-      var power = + power;
-      var att = + att;
-      var spatt = + spatt
-      var lv = + lv;
-      var def = + def;
-      var spdef = + spdef;
-    } else if (player==1 && ans!=0) {
-      var power = + power;
-      var att = + att;
-      var spatt = + spatt
-      var lv = + lv;
-      var def = + def;
-      var spdef = + spdef;
-
-      lv = ans.lv;
-      att = ans.att;
-      spatt = ans.spatt;
-      def = playerans.def;
-      spdef = playerans.spdef;
-    }
-
     spdamage = (((((2*lv)/5)+2)*power/8*(spatt/spdef))/50)+2;
     spdamage = parseInt(spdamage);
   }
@@ -373,7 +356,6 @@ render(){
 
       <div className="output">
         {damagec(this.state.power,this.state.def,this.state.sdef,this.state.at,this.state.sat,this.state.lv)}
-        {spdamagec(this.state.power,this.state.def,this.state.sdef,this.state.at,this.state.sat,this.state.lv)}
         {modc(this.state.other)}
         {finaldamage()}
         {hit(this.state.accuracy,this.state.evasion,this.state.baseacc)}
@@ -392,7 +374,7 @@ render(){
       <div className = "display">
       <Dis></Dis>
       </div>
-      
+
     </div>
   );
 }

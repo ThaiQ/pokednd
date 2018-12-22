@@ -8,222 +8,265 @@ var name = "";
 var ans=0;
 var player = 0;
 
+var nulls="null";
+var none="none";
+var normal = "normal";
+var fighting = "fighting";
+var flying = "flying";
+var poison = "poison";
+var rock = "rock";
+var bug = "bug";
+var ghost = "ghost";
+var steel = "steel";
+var fire = "fire";
+var water = "water";
+var grass = "grass";
+var electric = "electric";
+var ice = "ice";
+var dragon = "dragon";
+var dark = "dark";
+var fairy = "fairy";
+
 var e={
-  e01:{
-    name:"manual lv1",
-    lv:35,
-    hp:108,
-    att:82,
-    def:61,
-    spatt:75,
-    spdef:61,
-    spd: 71,
-    type1:"null",
-    type2:"null",
-  },
-  e02:{
-    name:"manual lv2",
-    lv:35,
-    hp:108,
-    att:82,
-    def:61,
-    spatt:75,
-    spdef:61,
-    spd: 71,
-    type1:"null",
-    type2:"null",
-  },
-  e03:{
-    name:"manual lv3",
-    lv:35,
-    hp:108,
-    att:82,
-    def:61,
-    spatt:75,
-    spdef:61,
-    spd: 71,
-    type1:"null",
-    type2:"null",
-  },
-  e04:{
-    name:"manual lv4",
-    lv:35,
-    hp:108,
-    att:82,
-    def:61,
-    spatt:75,
-    spdef:61,
-    spd: 71,
-    type1:"null",
-    type2:"null",
-  },
+  e011:{
+    name:	"36 - balance"	,
+lv:	36	,
+hp:	14	,
+att:	17	,
+def:	16	,
+spatt:	17	,
+spdef:	16	,
+spd: 	14	,
+type1:	nulls	,
+type2:	nulls	,
+},e012:{
+  name:	"36 - physical"	,
+lv:	36	,
+hp:	14	,
+att:	19	,
+def:	18	,
+spatt:	15	,
+spdef:	14	,
+spd: 	14	,
+type1:	nulls	,
+type2:	nulls	,
+},e013:{
+  name:	"36 - special"	,
+lv:	36	,
+hp:	14	,
+att:	15	,
+def:	14	,
+spatt:	19	,
+spdef:	18	,
+spd: 	14	,
+type1:	nulls	,
+type2:	nulls	,
+},e014:{
+  name:	"36 - offensive"	,
+lv:	36	,
+hp:	14	,
+att:	19	,
+def:	14	,
+spatt:	19	,
+spdef:	14	,
+spd: 	14	,
+type1:	nulls	,
+type2:	nulls	,
+},e015:{
+  name:	"36 - defensive"	,
+lv:	36	,
+hp:	16	,
+att:	14	,
+def:	19	,
+spatt:	14	,
+spdef:	19	,
+spd: 	14	,
+type1:	nulls	,
+type2:	nulls	,
+},e016:{
+  name:	"36 - fast"	,
+lv:	36	,
+hp:	14	,
+att:	18	,
+def:	14	,
+spatt:	18	,
+spdef:	14	,
+spd: 	18	,
+type1:	nulls	,
+type2:	nulls	,
+},
+
+e021:{
+  name:	"42 - balance"	,
+lv:	42	,
+hp:	15	,
+att:	18	,
+def:	17	,
+spatt:	18	,
+spdef:	17	,
+spd: 	15	,
+type1:	nulls	,
+type2:	nulls	,
+},e022:{
+  name:	"42 - physical"	,
+lv:	42	,
+hp:	15	,
+att:	20	,
+def:	19	,
+spatt:	16	,
+spdef:	15	,
+spd: 	15	,
+type1:	nulls	,
+type2:	nulls	,
+},e023:{
+  name:	"42 - special"	,
+lv:	42	,
+hp:	15	,
+att:	16	,
+def:	15	,
+spatt:	20	,
+spdef:	19	,
+spd: 	15	,
+type1:	nulls	,
+type2:	nulls	,
+},e024:{
+  name:	"42 - offensive"	,
+lv:	42	,
+hp:	15	,
+att:	20	,
+def:	15	,
+spatt:	20	,
+spdef:	15	,
+spd: 	15	,
+type1:	nulls	,
+type2:	nulls	,
+},e025:{
+  name:	"42 - defensive"	,
+lv:	42	,
+hp:	17	,
+att:	14	,
+def:	20	,
+spatt:	14	,
+spdef:	20	,
+spd: 	15	,
+type1:	nulls	,
+type2:	nulls	,
+},e026:{
+  name:	"42 - fast"	,
+lv:	42	,
+hp:	14	,
+att:	19	,
+def:	15	,
+spatt:	19	,
+spdef:	15	,
+spd: 	19	,
+type1:	nulls	,
+type2:	nulls	,
+},
+
+e031:{
+  name:	"58 - balance"	,
+lv:	48	,
+hp:	16	,
+att:	19	,
+def:	18	,
+spatt:	19	,
+spdef:	18	,
+spd: 	16	,
+type1:	nulls	,
+type2:	nulls	,
+},e032:{
+  name:	"58 - physical"	,
+lv:	48	,
+hp:	16	,
+att:	21	,
+def:	20	,
+spatt:	17	,
+spdef:	16	,
+spd: 	16	,
+type1:	nulls	,
+type2:	nulls	,
+},e033:{
+  name:	"58 - special"	,
+lv:	48	,
+hp:	16	,
+att:	17	,
+def:	16	,
+spatt:	21	,
+spdef:	20	,
+spd: 	16	,
+type1:	nulls	,
+type2:	nulls	,
+},e034:{
+  name:	"58 - offensive"	,
+lv:	48	,
+hp:	16	,
+att:	21	,
+def:	16	,
+spatt:	21	,
+spdef:	16	,
+spd: 	16	,
+type1:	nulls	,
+type2:	nulls	,
+},e035:{
+  name:	"58 - defensive"	,
+lv:	48	,
+hp:	18	,
+att:	15	,
+def:	21	,
+spatt:	15	,
+spdef:	21	,
+spd: 	16	,
+type1:	nulls	,
+type2:	nulls	,
+},e036:{
+  name:	"58 - fast"	,
+lv:	48	,
+hp:	15	,
+att:	20	,
+def:	16	,
+spatt:	20	,
+spdef:	16	,
+spd: 	20	,
+type1:	nulls	,
+type2:	nulls	,
+},
+
   e1:{
-    name:"Arcanine",
-    lv:35,
-    hp:108,
-    att:82,
-    def:61,
-    spatt:75,
-    spdef:61,
-    spd: 71,
-    type1:"fire",
-    type2:"none",
+name:	"Arcanine"	,
+lv:	42	,
+hp:	16	,
+att:	18	,
+def:	15	,
+spatt:	17	,
+spdef:	15	,
+spd: 	17	,
+type1:	fire	,
+type2:	none	,
   },
   e2:{
-    name:"Pikachu",
-    lv:30,
-    hp:61,
-    att:38,
-    def:29,
-    spatt:35,
-    spdef:35,
-    spd: 59,
-    type1:"electric",
-    type2:"none",
+    name:	"pikachu"	,
+    lv:	36	,
+    hp:	10	,
+    att:	12	,
+    def:	10	,
+    spatt:	11	,
+    spdef:	11	,
+    spd: 	15	,
+    type1:	electric	,
+    type2:	none	,
   },
   e3:{
-    name:"Golbat",
-    lv:40,
-    hp:110,
-    att:69,
-    def:61,
-    spatt:57,
-    spdef:65,
-    spd: 77,
-    type1:"poison",
-    type2:"flying",
-  },
-  e4:{
-    name:"Ponyta",
-    lv:40,
-    hp:90,
-    att:73,
-    def:49,
-    spatt:57,
-    spdef:57,
-    spd: 77,
-    type1:"fire",
-    type2:"none",
-  },
-  e5:{
-    name:"Magnemite",
-    lv:40,
-    hp:70,
-    att:33,
-    def:61,
-    spatt:81,
-    spdef:49,
-    spd: 41,
-    type1:"electric",
-    type2:"steel",
-  },
-  e6:{
-    name:"Electabuzz",
-    lv:50,
-    hp:125,
-    att:88,
-    def:62,
-    spatt:100,
-    spdef:90,
-    spd: 110,
-    type1:"electric",
-    type2:"none",
-  },
-  e7:{
-    name:"Magmar",
-    lv:50,
-    hp:125,
-    att:100,
-    def:62,
-    spatt:105,
-    spdef:90,
-    spd: 98,
-    type1:"fire",
-    type2:"none",
-  },
-  e8:{
-    name:"Wartortle",
-    lv:40,
-    hp:97,
-    att:55,
-    def:69,
-    spatt:57,
-    spdef:69,
-    spd: 51,
-    type1:"water",
-    type2:"none",
-  },
-  e9:{
-    name:"Sandslash",
-    lv:40,
-    hp:110,
-    att:85,
-    def:93,
-    spatt:41,
-    spdef:49,
-    spd: 57,
-    type1:"ground",
-    type2:"none",
-  },
-  e10:{
-    name:"Raichu",
-    lv:40,
-    hp:109,
-    att:86,
-    def:54,
-    spatt:86,
-    spdef:86,
-    spd: 104,
-    type1:"electric",
-    type2:"none",
-  },
-  e11:{
-    name:"Pinsir",
-    lv:55,
-    hp:136,
-    att:142,
-    def:115,
-    spatt:65,
-    spdef:82,
-    spd: 98,
-    type1:"bug",
-    type2:"none",
-  },
-  e12:{
-    name:"Jolteon",
-    lv:55,
-    hp:136,
-    att:76,
-    def:71,
-    spatt:126,
-    spdef:109,
-    spd: 148,
-    type1:"electric",
-    type2:"none",
-  },
-  e13:{
-    name:"Ray",
-    lv:100,
-    hp:11,
-    att:45,
-    def:45,
-    spatt:29,
-    spdef:29,
-    spd: 10,
-    type1:"flying",
-    type2:"dragon",
-  },
-  e14:{
-    name:"MRay",
-    lv:100,
-    hp:11,
-    att:48,
-    def:48,
-    spatt:20,
-    spdef:20,
-    spd: 54,
-    type1:"flying",
-    type2:"dragon",
+    name:	"squirtle"	,
+    lv:	30	,
+    hp:	9	,
+    att:	10	,
+    def:	12	,
+    spatt:	10	,
+    spdef:	11	,
+    spd: 	9	,
+    type1:	water	,
+    type2:	none	,
   },
 }
 
@@ -254,10 +297,24 @@ render(){
     if (opt != null) {opt = opt.value;}else {opt = 0;}
     opt = +option;
     if (opt==0){ans=0;}
-    else if (opt==0.1){ans=e.e01;}
-    else if (opt==0.1){ans=e.e02;}
-    else if (opt==0.1){ans=e.e03;}
-    else if (opt==0.1){ans=e.e04;}
+    else if (opt==0.11){ans=e.e011;}
+    else if (opt==0.12){ans=e.e012;}
+    else if (opt==0.13){ans=e.e013;}
+    else if (opt==0.14){ans=e.e014;}
+    else if (opt==0.15){ans=e.e015;}
+    else if (opt==0.16){ans=e.e016;}
+    else if (opt==0.21){ans=e.e021;}
+    else if (opt==0.22){ans=e.e022;}
+    else if (opt==0.23){ans=e.e023;}
+    else if (opt==0.24){ans=e.e024;}
+    else if (opt==0.25){ans=e.e025;}
+    else if (opt==0.26){ans=e.e026;}
+    else if (opt==0.31){ans=e.e031;}
+    else if (opt==0.32){ans=e.e032;}
+    else if (opt==0.33){ans=e.e033;}
+    else if (opt==0.34){ans=e.e034;}
+    else if (opt==0.35){ans=e.e035;}
+    else if (opt==0.36){ans=e.e036;}
     else if (opt==1){ans=e.e1;}
     else if (opt==2){ans=e.e2;}
     else if (opt==3){ans=e.e3;}
@@ -297,10 +354,24 @@ render(){
     <select id="enemy" value={this.state.e} onChange={this.e.bind(this)}>
     <option value="NaN">Enemy?</option>
     <option value="0">Enemy: manual</option>
-    <option value="0.1">Enemy: default 1</option>
-    <option value="0.2">Enemy: default 2</option>
-    <option value="0.3">Enemy: default 3</option>
-    <option value="0.4">Enemy: default 4</option>
+    <option value="0.11">Enemy: 1.1</option>
+    <option value="0.12">Enemy: 1.2</option>
+    <option value="0.13">Enemy: 1.3</option>
+    <option value="0.14">Enemy: 1.4</option>
+    <option value="0.15">Enemy: 1.5</option>
+    <option value="0.16">Enemy: 1.6</option>
+    <option value="0.21">Enemy: 2.1</option>
+    <option value="0.22">Enemy: 2.2</option>
+    <option value="0.23">Enemy: 2.3</option>
+    <option value="0.24">Enemy: 2.4</option>
+    <option value="0.25">Enemy: 2.5</option>
+    <option value="0.26">Enemy: 2.6</option>
+    <option value="0.31">Enemy: 3.1</option>
+    <option value="0.32">Enemy: 3.2</option>
+    <option value="0.33">Enemy: 3.3</option>
+    <option value="0.34">Enemy: 3.4</option>
+    <option value="0.35">Enemy: 3.5</option>
+    <option value="0.36">Enemy: 3.6</option>
     <option value="1">enemy 1</option>
     <option value="2">enemy 2</option>
     <option value="3">enemy 3</option>

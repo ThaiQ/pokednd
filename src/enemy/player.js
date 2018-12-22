@@ -8,6 +8,25 @@ var lv ="";
 var name = "";
 var playerans=0;
 
+var nulls="null";
+var none="none";
+var normal = "normal";
+var fighting = "fighting";
+var flying = "flying";
+var poison = "poison";
+var rock = "rock";
+var bug = "bug";
+var ghost = "ghost";
+var steel = "steel";
+var fire = "fire";
+var water = "water";
+var grass = "grass";
+var electric = "electric";
+var ice = "ice";
+var dragon = "dragon";
+var dark = "dark";
+var fairy = "fairy";
+
 var e={
   e1:{
     name:"mimikyu",
@@ -18,8 +37,8 @@ var e={
     spatt:18,
     spdef:24,
     spd: 23,
-    type1:"ghost",
-    type2:"fairy",
+    type1:ghost,
+    type2:fairy,
   },
   e2:{
     name:"drag.",
@@ -30,8 +49,8 @@ var e={
     spatt:16,
     spdef:15,
     spd: 16,
-    type1:"dragon",
-    type2:"none",
+    type1:dragon,
+    type2:none,
   }
 }
 
