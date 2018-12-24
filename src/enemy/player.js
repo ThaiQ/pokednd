@@ -72,6 +72,7 @@ spdef:	9	,
 spd: 	52	,
 type1:	grass	,
 type2:	none	,
+},
 }
 
 
